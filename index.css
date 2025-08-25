@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-primary-50 to-primary-100;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 border border-primary-200;
+  }
+  
+  .metric-card {
+    @apply card hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .status-active {
+    @apply bg-primary-500 text-white;
+  }
+  
+  .status-inactive {
+    @apply bg-gray-300 text-gray-600;
+  }
+}
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-primary-50 to-primary-100;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  body::before {
+    content: "🌱 💧 🌿 🍃 💦";
+    font-size: 3rem;
+    opacity: 0.15;
+    animation: floatEmojis 20s linear infinite;
+    background-repeat: repeat;
+    background-size: 10rem 10rem;
+    background-image: radial-gradient(circle, transparent 20%, rgba(255,255,255,0) 21%), 
+                      radial-gradient(circle, transparent 20%, rgba(255,255,255,0) 21%);
+    background-position: 0 0, 5rem 5rem;
+  }
+
+  body::after {
+    content: "🌾 💧 🌻 💦 🍀";
+    font-size: 2.5rem;
+    opacity: 0.1;
+    animation: floatEmojisReverse 30s linear infinite;
+    background-repeat: repeat;
+    background-size: 8rem 8rem;
+    background-position: 3rem 3rem, 8rem 8rem;
+  }
+
+  @keyframes floatEmojis {
+    0% {
+      background-position: 0 0, 5rem 5rem;
+    }
+    100% {
+      background-position: 0 10rem, 5rem 15rem;
+    }
+  }
+
+  @keyframes floatEmojisReverse {
+    0% {
+      background-position: 3rem 3rem, 8rem 8rem;
+    }
+    100% {
+      background-position: 3rem -7rem, 8rem 0rem;
+    }
+  }
+}
